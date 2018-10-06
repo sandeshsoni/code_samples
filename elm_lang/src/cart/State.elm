@@ -10,7 +10,7 @@ availableProducts =
           "Free Delivery"
           123.45
           True
-          (Just "http://files.random.com/abd.jpg")
+          (Just "https://picsum.photos/200/300?image=910")
           "product A"
     , Product
           "2"
@@ -18,7 +18,7 @@ availableProducts =
           "Free Delivery"
           234.56
           True
-          (Just "http://files.random.com/pgq.jpg")
+          (Just "https://picsum.photos/200/300?image=810")
           "product B"
     ]
 
