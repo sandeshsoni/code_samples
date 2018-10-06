@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Cart.Main exposing (main)
 
 -- import Html.App
 import Browser
