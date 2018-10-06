@@ -1,5 +1,6 @@
 module Home exposing (..)
 import Html exposing (..)
+import Session exposing (Session)
 
 -- Model
 type Status a
@@ -7,14 +8,17 @@ type Status a
     | Loaded a
 
 
-
+type alias Model =
+    { session : Session
+    , timeZone : Time.Zone
+    }
 
 -- View
 
 view : Model -> { title: String, content: Html Msg }
 view model =
-    { title: "Our Homepage"
-    , content:
+    { title = "Our Homepage"
+    , content =
         div [] [ text "lorel ipsum"]
     }
 
