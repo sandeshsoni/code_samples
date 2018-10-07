@@ -10,6 +10,11 @@ type alias Product =
     , description : String
     }
 
+type alias Category =
+    { id: String
+    , name : String
+    , description: String
+    }
 
 type alias Item =
     { product : Product
@@ -30,6 +35,7 @@ type Page
 type alias Model =
     { cart : Cart
     , availableProducts : List Product
+    , availableCategories : List Category
     , page : Page
     , currentProduct : Maybe Product
     }

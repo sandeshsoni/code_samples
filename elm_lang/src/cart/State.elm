@@ -30,6 +30,30 @@ availableProducts =
           "product C, set of 3pieces"
     ]
 
+categories : List Category
+categories =
+    [ Category
+          "1"
+          "Safety Shoes"
+          ""
+    , Category
+          "2"
+          "Hand Tools"
+          "hand tools lorel ipsum"
+    , Category
+          "3"
+          "Testing and measuring Equipments"
+          ""
+    , Category
+          "4"
+          "Tooling and cutting"
+          ""
+    , Category
+          "5"
+          "Corporate Gifting"
+          ""
+    ]
+
 
 -- init
 
@@ -37,7 +61,7 @@ init : () -> ( Model, Cmd Msg )
 init _ =
     let
         model =
-            Model (Cart []) availableProducts ProductList Nothing
+            Model (Cart []) availableProducts categories ProductList Nothing
         command =
             (Cmd.none)
     in
