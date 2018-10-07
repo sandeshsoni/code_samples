@@ -28,13 +28,61 @@ availableProducts =
           True
           (Just "https://picsum.photos/150/100?image=24")
           "product C, set of 3pieces"
+    , Product
+          "4"
+          "Product four"
+          "custom order"
+          1000
+          True
+          (Just "http://picsum.photos/150/100?image=41")
+          "Product D, safety product"
+    , Product
+          "5"
+          "Product five"
+          "custom order"
+          1500
+          True
+          (Just "http://picsum.photos/150/100?image=51")
+          "Product D, safety product"
+    , Product
+          "6"
+          "Product six"
+          "custom order"
+          1060
+          True
+          (Just "http://picsum.photos/150/100?image=62")
+          "Product D, safety product"
+    , Product
+          "7"
+          "Product seven"
+          "custom order"
+          700
+          True
+          (Just "http://picsum.photos/150/100?image=77")
+          "Product D, safety product"
+    , Product
+          "8"
+          "Product eight"
+          "custom order"
+          850
+          True
+          (Just "http://picsum.photos/150/100?image=81")
+          "Product D, safety product"
+    , Product
+          "9"
+          "Product nine"
+          "custom order"
+          1000
+          False
+          (Just "http://picsum.photos/150/100?image=91")
+          "Product D, safety product"
     ]
 
 categories : List Category
 categories =
     [ Category
           "1"
-          "Safety Shoes"
+          "Safety and Security"
           ""
           [ SubCategory
                 "1"
@@ -48,6 +96,9 @@ categories =
           , SubCategory
                 "4"
                 "Hand Protection"
+          , SubCategory
+                "5"
+                "Safety Shoes"
           ]
     , Category
           "2"

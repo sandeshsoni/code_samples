@@ -1,7 +1,11 @@
 module Cart.View exposing (view)
 
 import Cart.Types exposing (..)
-import Html exposing (div, h1, ul, li, text, img, a,p, header)
+import Html exposing (div, h1
+                     , ul, li
+                     , text, strong, b
+                     , img
+                     , a,p, header)
 import Html.Attributes exposing(class, src, href, style)
 import Numeral as Numeral
 
@@ -26,20 +30,29 @@ productDescriptionView product =
 
 page : Model -> Html.Html Msg
 page model =
-    div [ class "elm-cart-page container-fluid" ]
-        [ categoriesView model.availableCategories
-        , case model.page of
-              ProductList ->
-                  productListView model
-              ProductDetail ->
-                  productDetailView model
-              -- Checkout ->
-              --     checkOutView
+    div [ class "elm-cart-page container-fluid"
+        , style "display" "flex"
+        , style "flex" "1"
+        , style "flex-direction" "row"
+        ]
+        [ div [ style "flex" "1" ] [ categoriesView model.availableCategories ]
+        , div [ style "flex" "4"
+              , style "flex-direction" "row"
+              ] [ case model.page of
+                                         ProductList ->
+                                             productListView model
+                                         ProductDetail ->
+                                             productDetailView model
+                                   ]
+        -- Checkout ->
+        --     checkOutView
         ]
 
 productViewInStock : Product -> Html.Html Msg
 productViewInStock product =
-    li [ class "elm-cart-product" ]
+    li [ class "elm-cart-product"
+       , style "display" "flex"
+       ]
         [ div []
               [div [ class "elm-cart-product-image" ]
                   [ img [ src (getProductPictureURL product) ] []
@@ -52,7 +65,9 @@ productViewInStock product =
 
 productViewOutOfStock : Product -> Html.Html Msg
 productViewOutOfStock product =
-    li [ class "elm-cart-product" ]
+    li [ class "elm-cart-product"
+       , style "display" "flex"
+       ]
         [ div []
               [div [ class "elm-cart-product-image" ]
                   [ img [ src (getProductPictureURL product) ] []
@@ -94,7 +109,12 @@ productView product =
 productsView : List Product -> Html.Html Msg
 productsView products =
     div []
-        [ ul [class "elm-cart-products row"] (List.map productView products)
+        [ p [ style "background-color" "pink" ] [text "filters"]
+        , ul [ class "elm-cart-products row"
+             , style "display" "flex"
+             , style "align-items" "flex-start"
+             , style "flex-wrap" "wrap"
+             ] (List.map productView products)
         ]
 
 
@@ -112,30 +132,42 @@ subCategoryView subCategory =
 
 categoryView : Category -> Html.Html Msg
 categoryView category =
-    li [][ text category.name
-         , ul [](List.map subCategoryView category.subCategories)
+    li [][ b [][ text category.name ]
+         , ul [ style "list-style-type" "none"]
+             (List.map subCategoryView category.subCategories)
          ]
 
 
 categoriesView : List Category -> Html.Html Msg
 categoriesView categories =
     div []
-        [ ul [class "elm-cart-categories row"] (List.map categoryView categories)
+        [ ul [ class "elm-cart-categories row"
+             , style "list-style-type" "none"
+             ] (List.map categoryView categories)
         ]
 
+-- leftSide : List (String, String)
+-- leftSide = [("background", "red")]
 
+-- background : List (String, String)
+-- background =
+--     [ ("background-color", "rgb(245, 245, 245)")
+--     ]
 
 --
 
 headerView : Model -> Html.Html Msg
 headerView model =
-    header [ class "elm-cart-header row" ]
+    header [ class "elm-cart-header row"
+           , style "background-color" "grey"
+           , style "padding" "20px"
+           , style "display" "flex"
+           ]
         [ a [ class "logo"] [ text "Procurlae " ]
         , a [ class "home" , (href "#")] [ text "Home" ]
         , a [ class "elm-cart-header-checkout cart"] [ text "" ]
         , a [ class ""] [ text "Login" ]
         , a [ class ""] [ text "Premium Member" ]
-        , p [] [text "filters"]
         ]
 
 
@@ -150,7 +182,10 @@ footerView model =
 view : Model -> Html.Html Msg
 view model =
     div
-        []
+        [ style "display" "flex"
+        , style "flex" "1"
+        , style "flex-direction" "column"
+        ]
         [ headerView model
         , page model
         , footerView model
