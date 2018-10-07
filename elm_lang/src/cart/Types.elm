@@ -10,10 +10,16 @@ type alias Product =
     , description : String
     }
 
+type alias SubCategory =
+    { id : String
+    , name : String
+    }
+
 type alias Category =
     { id: String
     , name : String
     , description: String
+    , subCategories : List SubCategory
     }
 
 type alias Item =

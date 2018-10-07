@@ -1,7 +1,7 @@
 module Cart.View exposing (view)
 
 import Cart.Types exposing (..)
-import Html exposing (div, h1, ul, li, text, img, a, header)
+import Html exposing (div, h1, ul, li, text, img, a,p, header)
 import Html.Attributes exposing(class, src, href, style)
 import Numeral as Numeral
 
@@ -27,7 +27,8 @@ productDescriptionView product =
 page : Model -> Html.Html Msg
 page model =
     div [ class "elm-cart-page container-fluid" ]
-        [ case model.page of
+        [ categoriesView model.availableCategories
+        , case model.page of
               ProductList ->
                   productListView model
               ProductDetail ->
@@ -103,11 +104,17 @@ productListView model =
         [ productsView model.availableProducts
         ]
 
--- Category list
+-- Category and SubCategory list
+
+subCategoryView : SubCategory -> Html.Html Msg
+subCategoryView subCategory =
+    li [][ text subCategory.name ]
 
 categoryView : Category -> Html.Html Msg
 categoryView category =
-    li [][ text category.name ]
+    li [][ text category.name
+         , ul [](List.map subCategoryView category.subCategories)
+         ]
 
 
 categoriesView : List Category -> Html.Html Msg
@@ -126,7 +133,9 @@ headerView model =
         [ a [ class "logo"] [ text "Procurlae " ]
         , a [ class "home" , (href "#")] [ text "Home" ]
         , a [ class "elm-cart-header-checkout cart"] [ text "" ]
-        , categoriesView model.availableCategories
+        , a [ class ""] [ text "Login" ]
+        , a [ class ""] [ text "Premium Member" ]
+        , p [] [text "filters"]
         ]
 
 

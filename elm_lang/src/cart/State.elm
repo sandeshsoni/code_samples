@@ -36,22 +36,45 @@ categories =
           "1"
           "Safety Shoes"
           ""
+          [ SubCategory
+                "1"
+                "Helmets"
+          , SubCategory
+                "2"
+                "Eye Protection"
+          , SubCategory
+                "3"
+                "Face Protection"
+          , SubCategory
+                "4"
+                "Hand Protection"
+          ]
     , Category
           "2"
           "Hand Tools"
           "hand tools lorel ipsum"
+          []
     , Category
           "3"
           "Testing and measuring Equipments"
           ""
+          [ SubCategory
+                "31"
+                "Measurement Tape"
+          , SubCategory
+                "32"
+                "Thermometer"
+          ]
     , Category
           "4"
           "Tooling and cutting"
           ""
+          []
     , Category
           "5"
           "Corporate Gifting"
           ""
+          []
     ]
 
 
