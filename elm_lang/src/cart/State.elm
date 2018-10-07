@@ -10,16 +10,24 @@ availableProducts =
           "Free Delivery"
           123.45
           True
-          (Just "https://picsum.photos/200/300?image=910")
+          (Just "https://picsum.photos/150/100?image=50")
           "product A"
     , Product
           "2"
           "two"
           "Free Delivery"
           234.56
-          True
-          (Just "https://picsum.photos/200/300?image=810")
+          False
+          (Just "https://picsum.photos/150/100?image=2")
           "product B"
+    , Product
+          "3"
+          "Product three"
+          "Free Delivery"
+          550.00
+          True
+          (Just "https://picsum.photos/150/100?image=24")
+          "product C, set of 3pieces"
     ]
 
 

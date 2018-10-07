@@ -45,6 +45,7 @@ productViewInStock product =
                   ]
               , div [ class "elm-cart-product-name" ][ text product.name ]
               , div [ class "elm-cart-product-price elm-cart-button" ][ text ( formatCurrency product.price) ]
+              , productDescriptionView product
               ]
         ]
 
@@ -56,7 +57,8 @@ productViewOutOfStock product =
                   [ img [ src (getProductPictureURL product) ] []
                   ]
               , div [ class "elm-cart-product-name" ] [ text product.name ]
-              , div [ class "elm-cart-product-price elm-cart-button" ] [text ("OUT OF STOCK")]
+              , div [ class "elm-cart-product-price elm-cart-button" ] [text ("OUT OF STOCK, Lead Time: 10days")]
+              , productDescriptionView product
               ]
         ]
 
@@ -102,22 +104,16 @@ productListView model =
 headerView : Model -> Html.Html Msg
 headerView model =
     header [ class "elm-cart-header row" ]
-        [ a
-          [ class "home"
-          , (href "#")
-          ]
-  [ text "Home" ]
-        , a
-  [ class "elm-cart-header-checkout cart"
-  ]
-  [ text "" ]
+        [ a [ class "logo"] [ text "Procurlae " ]
+        , a [ class "home" , (href "#")] [ text "Home" ]
+        , a [ class "elm-cart-header-checkout cart"] [ text "" ]
         ]
 
 
 footerView : Model -> Html.Html Msg
 footerView model =
     div [ class "elm-footer" ]
-        [ text "foo bar"
+        [ text "foo bar footer, 2018. formulae"
         , Html.br [] []
         ]
 
