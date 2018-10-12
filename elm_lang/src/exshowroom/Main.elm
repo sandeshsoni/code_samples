@@ -2,6 +2,11 @@ module Main exposing (main)
 
 import Browser exposing (Document)
 
+import Page.Home.Model as HomeModel
+import Page.Home.Message as HomeMsg
+import Page.About.Model as AboutModel
+import Page.About.Message as AboutMsg
+
 -- type Model
 --     = Login Login.Model
 --     | Compare Compare.Model
