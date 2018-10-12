@@ -19,9 +19,9 @@ type Route
 routeMatcher : Parser (Route -> a) a
 routeMatcher =
     oneOf
-        [ Url.map Home (s "")
-        , Url.map About (s "about")
-        , Url.map Vehicle (s "cars" </> VehicleSlug.urlParser)
+        [ Parser.map Home (s "")
+        , Parser.map About (s "about")
+        , Parser.map Vehicle (s "cars" </> VehicleSlug.urlParser)
         ]
 
 
