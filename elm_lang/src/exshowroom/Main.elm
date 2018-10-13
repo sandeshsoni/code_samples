@@ -104,3 +104,9 @@ setRoute route model =
 
 
 -- init
+
+init : Value -> Location -> (Model, Cmd Msg)
+init val location =
+    setRoute (Route.fromLocation location)
+        { page = initialPage
+        }
