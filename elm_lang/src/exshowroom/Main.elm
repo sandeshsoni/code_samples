@@ -10,6 +10,9 @@ import Page.About.Model as AboutModel
 import Page.About.Message as AboutMsg
 import Page.About.Function as AboutFunction
 
+import Page.Dashboard.Model as DashboardModel
+import Page.Dashboard.View as DashboardView
+
 -- type Model
 --     = Login Login.Model
 --     | Compare Compare.Model
