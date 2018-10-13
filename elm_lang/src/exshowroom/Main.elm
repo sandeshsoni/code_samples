@@ -4,8 +4,11 @@ import Browser exposing (Document)
 
 import Page.Home.Model as HomeModel
 import Page.Home.Message as HomeMsg
+import Page.Home.Function as HomeFunction
+
 import Page.About.Model as AboutModel
 import Page.About.Message as AboutMsg
+import Page.About.Function as AboutFunction
 
 -- type Model
 --     = Login Login.Model
@@ -27,12 +30,23 @@ type Page
     | Vehicle CarModel.Model
 
 type Msg
-    = GotHomeMsg Home.Msg
+    = GotHomeMsg HomeMessage.Msg
     | GotAboutMsg AboutMessage.Msg
     | SetRoute (Maybe Route)
     -- | GotUpcoming Latest.Msg
     -- | GotProfileMsg Profile.Msg
     -- | GotLoginMsg Login.Msg
+
+
+setRoute : Maybe Route -> Model -> (Model, Cmd Msg)
+setRoute route model =
+    case route of
+        Nothing ->
+            -- TODO 404 page
+        Nothing Just Route.Home ->
+            ({ model | page = Home HomeFunction.init }, Cmd.none)
+        Just Route.About ->
+            ({ model | page = About AboutFunction.init }, Cmd.none)
 
 
 -- view : Model -> Document Msg
@@ -90,4 +104,3 @@ type Msg
 
 
 -- init
-
