@@ -12,6 +12,7 @@ import Garudabuy.Api as Api exposing (Cred)
 import Garudabuy.Page as Page exposing (..)
 
 import Garudabuy.Page.Home as Home
+import Garudabuy.Page.Admin as Admin
 import Garudabuy.Page.Blank as Blank
 import Garudabuy.Page.NotFound as NotFound
 
@@ -20,7 +21,7 @@ import Html exposing (text, div)
 
 type Model
     = Home Home.Model
-    | Admin Home.Model
+    | Admin Admin.Model
     | Redirect Session
     | NotFound Session
 
@@ -50,8 +51,8 @@ changeRouteTo maybeRoute model =
                 Home.init session
                     |> updateWith Home GotHomeMsg model
             Just Route.Admin ->
-                Home.init session
-                    |> updateWith Home GotHomeMsg model
+                Admin.init session
+                    |> updateWith Admin GotAdminMsg model
 
 
 updateWith : (subModel -> Model) -> (subMsg -> Msg) -> Model -> (subModel, Cmd subMsg) -> (Model, Cmd Msg)
@@ -71,11 +72,11 @@ toSession page =
         NotFound session ->
             session
         Admin admin ->
-            Home.toSession admin
+            Admin.toSession admin
 
 type Msg
     = GotHomeMsg Home.Msg
-    | GotAdminMsg Home.Msg
+    | GotAdminMsg Admin.Msg
     | ClickedLink Browser.UrlRequest
     | ChangedUrl Url
     | Ignored
@@ -89,8 +90,8 @@ update msg model =
             Home.update subMsg home
                  |> updateWith Home GotHomeMsg model
         (GotAdminMsg subMsg,  Admin admin) ->
-            Home.update subMsg admin
-                 |> updateWith Home GotHomeMsg model
+            Admin.update subMsg admin
+                 |> updateWith Admin GotAdminMsg model
         (ClickedLink urlRequest, _)  ->
             case urlRequest of
                 Browser.Internal url ->
@@ -130,7 +131,7 @@ view model =
     -- , body = List.map (Html.map toMsg) text "hello"
     -- }
         Admin admin ->
-            viewPage Page.Home GotHomeMsg (Home.view admin)
+            viewPage Page.Admin GotAdminMsg (Admin.view admin)
     -- Non page models
         NotFound _ ->
             viewPage Page.Other(\_ -> Ignored) Blank.view
