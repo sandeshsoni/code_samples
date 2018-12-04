@@ -57,7 +57,10 @@ updateForm transform model =
 view : Model -> { title: String, content: Html Msg }
 view model =
     { title = "Login"
-    , content = div[][ viewForm model.form]
+    , content = div[][ viewForm model.form
+                     , div [][text "email is"]
+                     , div [][text model.form.email]
+                     ]
     }
 
 
@@ -68,6 +71,7 @@ viewForm form =
               [ input
                     [ placeholder "Email"
                     , value form.email
+                    , onInput EnteredEmail
                     ]
                     []
               ]
