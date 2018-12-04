@@ -9,6 +9,7 @@ import Html exposing (Html, li, p, div, a, text)
 type Page
     = Home
     | Admin
+    | Login
     | Other
 
 view : Maybe Viewer -> Page -> {title: String, content: Html msg} -> Document msg
@@ -37,7 +38,11 @@ viewMenu page maybeViewer =
                 [ linkTo Route.Admin [ text "newPost " ]]
 
         Nothing ->
-            [ linkTo Route.Admin [ text "Sign in" ]]
+            [ linkTo Route.Admin [ text "Admin" ]
+            , linkTo Route.Home [ text "Home" ]
+            , linkTo Route.Login [ text "Log In" ]
+            , linkTo Route.Home [ text "Register" ]
+            ]
 
 navbarLink : Page -> Route -> List(Html msg) -> Html msg
 navbarLink page route linkContent =

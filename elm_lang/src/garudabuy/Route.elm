@@ -10,12 +10,14 @@ import Html exposing (Attribute)
 type Route
     = Home
     | Admin
+    | Login
 
 parser : Parser (Route -> a) a
 parser =
     oneOf
         [ Parser.map Home Parser.top
         , Parser.map Admin (s "admin")
+        , Parser.map Login (s "login")
         ]
 
 -- match and get top most
@@ -38,6 +40,8 @@ routeToString page =
                     []
                 Admin ->
                     ["admin"]
+                Login ->
+                    ["login"]
 
     in
         "#/" ++ String.join "/" pieces

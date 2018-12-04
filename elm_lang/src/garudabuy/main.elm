@@ -15,6 +15,7 @@ import Garudabuy.Page.Home as Home
 import Garudabuy.Page.Admin as Admin
 import Garudabuy.Page.Blank as Blank
 import Garudabuy.Page.NotFound as NotFound
+import Garudabuy.Page.Login as Login
 
 
 import Html exposing (text, div)
@@ -22,6 +23,7 @@ import Html exposing (text, div)
 type Model
     = Home Home.Model
     | Admin Admin.Model
+    | Login Login.Model
     | Redirect Session
     | NotFound Session
 
@@ -53,6 +55,9 @@ changeRouteTo maybeRoute model =
             Just Route.Admin ->
                 Admin.init session
                     |> updateWith Admin GotAdminMsg model
+            Just Route.Login ->
+                Login.init session
+                    |> updateWith Login GotLoginMsg model
 
 
 updateWith : (subModel -> Model) -> (subMsg -> Msg) -> Model -> (subModel, Cmd subMsg) -> (Model, Cmd Msg)
@@ -73,10 +78,13 @@ toSession page =
             session
         Admin admin ->
             Admin.toSession admin
+        Login login ->
+            Login.toSession login
 
 type Msg
     = GotHomeMsg Home.Msg
     | GotAdminMsg Admin.Msg
+    | GotLoginMsg Login.Msg
     | ClickedLink Browser.UrlRequest
     | ChangedUrl Url
     | Ignored
@@ -89,9 +97,12 @@ update msg model =
         (GotHomeMsg subMsg, Home home) ->
             Home.update subMsg home
                  |> updateWith Home GotHomeMsg model
-        (GotAdminMsg subMsg,  Admin admin) ->
+        (GotAdminMsg subMsg, Admin admin) ->
             Admin.update subMsg admin
                  |> updateWith Admin GotAdminMsg model
+        (GotLoginMsg subMsg, Login login) ->
+            Login.update subMsg login
+                |> updateWith Login GotLoginMsg model
         (ClickedLink urlRequest, _)  ->
             case urlRequest of
                 Browser.Internal url ->
@@ -132,7 +143,9 @@ view model =
     -- }
         Admin admin ->
             viewPage Page.Admin GotAdminMsg (Admin.view admin)
-    -- Non page models
+        Login login ->
+            viewPage Page.Login GotLoginMsg (Login.view login)
+        -- Non page models
         NotFound _ ->
             viewPage Page.Other(\_ -> Ignored) Blank.view
         Redirect _ ->
