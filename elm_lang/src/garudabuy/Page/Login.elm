@@ -1,6 +1,8 @@
 module Garudabuy.Page.Login exposing (..)
 
-import Html exposing (Html, div, p, input, form, text)
+import Html exposing (Html, div, p, input, form, text, fieldset)
+import Html.Attributes exposing (placeholder, class, value)
+import Html.Events exposing (..)
 
 import Garudabuy.Session exposing (Session)
 
@@ -55,8 +57,30 @@ updateForm transform model =
 view : Model -> { title: String, content: Html Msg }
 view model =
     { title = "Login"
-    , content = div[][text "login form"]
+    , content = div[][ viewForm model.form]
     }
+
+
+viewForm : Form -> Html Msg
+viewForm form =
+    Html.form []
+        [ fieldset [ class "form-group" ]
+              [ input
+                    [ placeholder "Email"
+                    , value form.email
+                    ]
+                    []
+              ]
+        , fieldset [ class "form-group" ]
+              [ input
+                    [ placeholder "password"
+                    , value form.password
+                    ]
+                    []
+              ]
+
+        ]
+
 
 
 toSession : Model -> Session

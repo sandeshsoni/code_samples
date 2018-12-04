@@ -20,7 +20,7 @@ view maybeViewer page {title, content} =
 
 
 -- header
--- viewHeader: Page -> 
+-- viewHeader: Page ->
 
 -- side menu
 viewMenu : Page -> Maybe Viewer -> List (Html msg)
