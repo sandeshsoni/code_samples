@@ -9,6 +9,7 @@ import Garudabuy.Session exposing (Session)
 type Msg
     = EnteredEmail String
     | EnteredPassword String
+    | GotSession Session
 
 
 type alias Form =
@@ -35,6 +36,7 @@ type alias Model =
 
 init : Session -> (Model, Cmd Msg)
 init session =
+    Debug.log("Login.elm -> init")
     ({ session = session
      , form = initialForm
      , problems = []
@@ -46,16 +48,23 @@ update : Msg -> Model -> (Model, Cmd msg)
 update msg model =
     case msg of
         EnteredEmail email ->
+            Debug.log("Login.elm -> update - Entered email")
             updateForm(\form -> { form | email = email }) model
         EnteredPassword password ->
+            Debug.log("Login.elm -> update - Entered passwd")
             updateForm(\form -> { form | password = password }) model
+        GotSession session ->
+            Debug.log("Home.elm -> update -> GotSessoin")
+            ({ model | session = session }, Cmd.none)
 
 updateForm : (Form -> Form) -> Model -> (Model, Cmd msg)
 updateForm transform model =
+    Debug.log("Login.elm -> upd8 form")
     ({ model | form = transform model.form }, Cmd.none)
 
 view : Model -> { title: String, content: Html Msg }
 view model =
+    Debug.log("Login.e view")
     { title = "Login"
     , content = div[][ viewForm model.form
                      , div [][text "email is"]
@@ -89,4 +98,5 @@ viewForm form =
 
 toSession : Model -> Session
 toSession model =
+    Debug.log("Login.e toSession")
     model.session

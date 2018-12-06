@@ -10,10 +10,12 @@ type Page
     = Home
     | Admin
     | Login
+    | Register
     | Other
 
 view : Maybe Viewer -> Page -> {title: String, content: Html msg} -> Document msg
 view maybeViewer page {title, content} =
+    Debug.log("Page.e view")
     { title = title ++ " | Company name"
     , body = viewMenu page maybeViewer ++ [content]
     }
@@ -41,7 +43,8 @@ viewMenu page maybeViewer =
             [ linkTo Route.Admin [ text "Admin" ]
             , linkTo Route.Home [ text "Home" ]
             , linkTo Route.Login [ text "Log In" ]
-            , linkTo Route.Home [ text "Register" ]
+            , linkTo Route.Register [ text "Register" ]
+            , linkTo Route.NewArticle [ text "New Article" ]
             ]
 
 navbarLink : Page -> Route -> List(Html msg) -> Html msg
