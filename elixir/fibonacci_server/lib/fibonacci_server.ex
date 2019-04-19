@@ -1,6 +1,6 @@
 defmodule FibonacciServer do
 
-  # defdelegate Calculate
+  defdelegate calculate(num), to: Fibonacci.Calculator
 
 
   @moduledoc """
