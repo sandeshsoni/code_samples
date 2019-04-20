@@ -3,6 +3,18 @@ defmodule FibonacciServer do
   defdelegate calculate(num), to: Fibonacci.Calculator
 
 
+  # TODO
+  # defdelegate calculate(list)
+
+  # TODO
+  # historification
+
+  # history
+  # history_count
+
+  # TODO
+  # cache results
+
   @moduledoc """
   Documentation for FibonacciServer.
   """
