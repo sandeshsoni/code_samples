@@ -2,6 +2,13 @@ defmodule FibonacciServer do
 
   defdelegate calculate(num), to: Fibonacci.Calculator
 
+
+  # if names are not sure, then use foobar, rename later
+  # cache results, map?
+  defmodule Foo do
+    defstruct bar_history: []
+  end
+
   # TODO
   # historification
 
