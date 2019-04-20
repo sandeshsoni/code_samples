@@ -11,6 +11,7 @@ defmodule FibonacciServer do
 
   # history
   # history_count
+  # observor?
 
   # TODO
   # cache results

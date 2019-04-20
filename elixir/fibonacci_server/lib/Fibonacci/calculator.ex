@@ -12,6 +12,12 @@ defmodule Fibonacci.Calculator do
   # end
 
   # tail cal optimized
+
+
+  def calculate(list) when is_list(list) do
+    Enum.map(list, fn x -> calculate(x) end)
+  end
+
   def calculate(0), do: 0
   def calculate(1), do: 1
   def calculate(n), do: calculate(n, 1, 0)
