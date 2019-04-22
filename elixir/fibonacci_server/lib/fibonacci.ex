@@ -13,7 +13,13 @@ defmodule Fibonacci do
     Fibonacci.Server.start_link()
   end
 
+  def history(calculator_pid) do
+    GenServer.call(calculator_pid, {:get_history})
+  end
 
+  def stats(calculator_pid) do
+    GenServer.call(calculator_pid, {:get_stats})
+  end
 
   # def calculate(input) do
   #   call_fib input
