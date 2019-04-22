@@ -1,4 +1,4 @@
-defmodule Fibonacci.Registry do
+defmodule Fibonacci.Server do
   use GenServer
 
   # Agent?

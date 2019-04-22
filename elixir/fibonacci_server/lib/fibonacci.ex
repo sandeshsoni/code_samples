@@ -1,13 +1,19 @@
-defmodule FibonacciServer do
+defmodule Fibonacci do
 
-  defdelegate calculate(num), to: Fibonacci.Calculator
+  alias Fibonacci.Calculator
 
-
-  # if names are not sure, then use foobar, rename later
-  # cache results, map?
-  defmodule Foo do
-    defstruct bar_history: []
+  # defdelegate calculate(num), to: Fibonacci.Calculator
+  def get_fibonacci(calculator_pid, number) do
+    # : Fibonacci.Calculator
+    # Fibonacci.Registry.call()
+    GenServer.call(calculator_pid, {:get_fibonacci, number})
   end
+
+  def new_calculator do
+    Fibonacci.Server.start_link()
+  end
+
+
 
   # def calculate(input) do
   #   call_fib input
