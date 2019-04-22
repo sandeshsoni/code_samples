@@ -13,6 +13,11 @@ defmodule Fibonacci.Calculator do
 
   # tail cal optimized
 
+  def new_calculator do
+    # ets?
+    names = :ets.new(:table, [:set, :named_table])
+    %{a: "b", c: "d"}
+  end
 
   def calculate(list) when is_list(list) do
     Enum.map(list, fn x -> calculate(x) end)
