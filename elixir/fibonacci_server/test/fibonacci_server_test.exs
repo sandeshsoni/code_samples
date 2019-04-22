@@ -18,4 +18,10 @@ defmodule FibonacciServerTest do
     ]
   end
 
+  test "historification" do
+    # make 3 calls,
+    # call history
+    # assert history correct sequence
+  end
+
 end
