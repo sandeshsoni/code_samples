@@ -3,6 +3,10 @@ defmodule FibonacciApp do
 
   def start(_type, _args) do
     children = [
+      %{
+        id: Fibonacci,
+        start: {Fibonacci, :new_calculator, []}
+      },
       Plug.Cowboy.child_spec(
         scheme: :http,
         # plug: Fibonacci.WebPlug,
