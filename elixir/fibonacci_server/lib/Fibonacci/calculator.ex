@@ -36,10 +36,17 @@ defmodule Fibonacci.Calculator do
     Enum.map(list, fn x -> calculate(x) end)
   end
 
+  def calculate(n) when is_bitstring(n) do
+    IO.puts "bitstring #{n}"
+    String.to_integer(n)
+  end
+
   def calculate(0), do: 0
   def calculate(1), do: 1
 
   def calculate(n) do
+    IO.puts "is bin #{is_binary n}"
+    IO.puts "is bi #{is_bitstring n}"
     IO.puts "in cal";
     calculate(n, 1, 0)
   end

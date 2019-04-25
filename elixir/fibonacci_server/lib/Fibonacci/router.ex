@@ -12,7 +12,12 @@ defmodule Fibonacci.Router do
   end
 
   get("/fib/:id") do
-    body = Jason.encode!(%{ id: id })
+    # String.to_integer(:id)
+    body = Jason.encode!(%{ fibonacci: Fibonacci.get_fibonacci(Fibo, "#{id}"),
+                            history: Fibonacci.history(Fibo),
+                            stats: Fibonacci.stats(Fibo)
+                          }
+    )
 
     conn
     |> put_resp_content_type("text/json")

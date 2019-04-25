@@ -16,7 +16,7 @@ defmodule Fibonacci.Server do
     end
 
   def start_link() do
-    GenServer.start_link(__MODULE__, nil)
+    GenServer.start_link(__MODULE__, nil, [ name: Fibo ])
   end
 
   # def call_fib(foo) do
