@@ -11,6 +11,11 @@ defmodule Fibonacci.Router do
     send_resp(conn, 200, "world")
   end
 
+  get "/favicon.ico" do
+    send_resp(conn, 200, "world")
+    # Api.Repo.getCategories(conn)
+  end
+
   get("/fib/:id") do
     # String.to_integer(:id)
     body = Jason.encode!(%{ fibonacci: Fibonacci.get_fibonacci(Fibo, "#{id}"),
